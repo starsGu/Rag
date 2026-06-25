@@ -1,0 +1,84 @@
+此文件定义一个 Java 风格单例 Retriever
+
+Retriever 类只有一个全局实例。重复创建 Retriever 时返回同一个实例；测试需要切换路径或模型时，可以通过显式重置测试实例的方式处理。
+
+Retriever 可以调用 corpus 包里文件处理的所有对外接口，尤其是单文档处理函数 process_document(path, config=None, similarity_model=None)。
+
+Retriever 管理知识库 data/corpus/corpus.db 和向量库 data/vector/vector.db，每次创建检查这两个库是否存在，否则创建。
+
+知识库约定：
+    chunks 是唯一可检索文本入口。
+    每条 chunk 记录至少包含：
+        id
+        content
+        metadata_json
+        source_path
+        source_name
+        chunk_index
+        model_path
+        created_at
+    未来如果知识库增加 documents、tags 等其他表，向量库仍然只关联 chunks。
+    同一文档同一模型重复归档，不应产生重复检索结果。
+    同一文档不同模型处理，视为不同处理结果，可以产生不同 chunk 记录。
+
+向量库约定：
+    vectors 表至少包含：
+        chunk_id
+        model_path
+        embedding_json
+        dimension
+        content_hash
+        created_at
+        updated_at
+    vectors 的主键为 (chunk_id, model_path)。
+    vectors.chunk_id 指向 chunks.id。
+    检索时必须 JOIN 当前 chunks 表回查 content 和 metadata，只返回当前知识库仍存在的 chunk。
+    Retriever 只使用当前 model_path 对应的向量参与检索。
+    update() 不删除旧向量，只补齐缺失向量。
+
+成员变量：
+    corpus_db_path: 默认 data/corpus/corpus.db
+    vector_db_path: 默认 data/vector/vector.db
+    model_path: 默认 model/corpus/bge-small-zh-v1.5
+    vector_weight: 默认 0.6
+    bm25_weight: 默认 0.4
+
+模型：
+    默认模型为 model/corpus/bge-small-zh-v1.5。
+    model_path 可以指定为 lexical，用于测试或无 ML 依赖环境。
+    不同 model_path 处理同一文档时，视为不同处理结果。
+
+__init__:
+    检查并创建知识库和向量库。
+    初始化当前 model_path。
+    保持单例语义，一个类只有一个全局实例。
+
+接口：
+    retrieve(str, k)
+        根据 str 使用同目录 method 里的 vector_search 和 bm25_search 两种方法，按照 0.6、0.4 的比例混合得分。
+        只检索当前 model_path 对应的向量。
+        从向量库得到候选 chunk_id 后，JOIN 知识库 chunks 表找出对应文本和元数据。
+        返回最多 k 个完整结果，每个结果包含：
+            chunk_id
+            content
+            metadata
+            model_path
+            hybrid_score
+            vector_score
+            bm25_score
+        终端打印时只打印 content 文本。
+        当 k < 1 时抛 ValueError。
+        当知识库为空时返回空列表。
+
+    archive(path)
+        根据 path 的单文档路径，调用 corpus.process_document(path, ...)。
+        将文档分块并存储进知识库。
+        随后调用 update()，扫描知识库中当前 model_path 的所有分块，并把缺失向量补进向量库。
+        同一文档同一模型重复归档不产生重复结果。
+        同一文档不同模型归档可以产生不同结果。
+        非法路径、目录路径、不支持格式、模型加载失败时抛异常。
+
+    update()
+        更新向量库，确保知识库 chunks 表里当前 model_path 的所有分块都在向量库里有记录。
+        只补齐缺失的 (chunk_id, model_path) 向量。
+        不删除旧向量。

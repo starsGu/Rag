@@ -1,0 +1,30 @@
+本文件实现两种检索编码和评分方法。
+
+两个方法都返回 chunk_id -> score，由 Retriever 负责归一化、按照 0.6 / 0.4 混合排序，并回查知识库文本。
+
+1 向量检索
+    将文本转换为高维向量，通过余弦相似度等度量文本间的语义相似性。
+
+    函数：
+        vector_search(query_vector, chunk_vectors) -> dict[str, float]
+
+    输入：
+        query_vector: 查询文本对应的向量
+        chunk_vectors: dict[str, list[float]]，key 为 chunk_id，value 为分块向量
+
+    输出：
+        dict[str, float]，key 为 chunk_id，value 为向量相似度分数
+
+2 BM25 检索
+    基于词频（TF）和逆文档频率（IDF），利用 BM25 公式对关键词匹配进行加权计算，衡量查询和文档之间的相关性。
+    暂时按字符切分，不引入中文分词依赖。
+
+    函数：
+        bm25_search(query_text, chunks) -> dict[str, float]
+
+    输入：
+        query_text: 查询文本
+        chunks: dict[str, str]，key 为 chunk_id，value 为分块正文 content
+
+    输出：
+        dict[str, float]，key 为 chunk_id，value 为 BM25 相关性分数
