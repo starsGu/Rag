@@ -1,20 +1,28 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  MANDATORY PROJECT POLICY FOR THE COMPLETE OPENSPEC WORKFLOW:
+  The plan/ directory is maintained by the user and is authoritative for detailed implementation constraints. Treat it as read-only. The AI may provide suggestions in conversation and may polish wording only when the user explicitly asks, without changing any technical meaning, constraint, or decision. Never create, delete, rename, move, or substantively edit plan files.
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  Before working on a Python module or any OpenSpec artifact concerning it, read and obey its matching plan file when present. If a required implementation decision is missing, suggest options and ask the user; do not invent a plan decision. If code or an OpenSpec artifact conflicts with the plan, stop and report the conflict rather than changing or ignoring the plan.
+
+  All representations use the same relative path:
+    plan/<relative-path>.txt
+    <relative-path>.py
+    openspec/specs/<relative-path>/spec.md
+    openspec/changes/<change-name>/specs/<relative-path>/spec.md
+  Thus plan/a/b/c.txt corresponds to a/b/c.py and to every OpenSpec specs/a/b/c/spec.md, whether it is a main spec or a change spec. Preserve directory names, filename stems, and case; never flatten or remap this path. Before creating or modifying source or specs, derive and check the corresponding paths. Never create a missing plan file; report it and ask the user to maintain it before implementation proceeds.
+
+rules:
+  proposal:
+    - Identify affected Python modules using their source-relative paths and consult the matching user-owned plan files before defining scope.
+    - Do not propose creating or substantively editing plan files; unresolved implementation details remain user decisions.
+  design:
+    - Follow the matching plan files as authoritative implementation constraints and surface any conflict or missing decision to the user.
+    - Preserve the exact plan/source/spec relative-path correspondence; do not introduce capability paths that break it.
+  specs:
+    - Place each module spec at specs/<source-relative-path>/spec.md so it maps to <source-relative-path>.py and plan/<source-relative-path>.txt.
+    - Read the matching plan file before authoring or changing a spec, and do not contradict or silently extend its implementation constraints.
+  tasks:
+    - Create implementation tasks only after consulting the matching plan files, and include path checks for every affected Python module and spec.
+    - Never add a task that asks the AI to create or substantively edit a plan file.
