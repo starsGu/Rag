@@ -1,0 +1,717 @@
+[
+  {
+    "content_index": 0,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the title of the paper?"
+      },
+      {
+        "from": "gpt",
+        "value": "Bridging the Vision-Brain Gap with an Uncertainty-Aware Blur Prior."
+      }
+    ]
+  },
+  {
+    "content_index": 1,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the System GAP mentioned in the paper?"
+      },
+      {
+        "from": "gpt",
+        "value": "The System GAP is the discrepancy caused by the inevitable loss of high‑frequency details when visual stimuli are processed by the human visual system into brain signals, due to limited attentional resources, eye movement constraints, and the finite capacity of visual working memory."
+      }
+    ]
+  },
+  {
+    "content_index": 2,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What causes the Random GAP?"
+      },
+      {
+        "from": "gpt",
+        "value": "The Random GAP arises from three factors: dynamic perceptual processes (e.g., shifts in visual attention), dynamic cognitive processes (e.g., associating with similar objects or concepts), and low‑level technical noise in signal acquisition."
+      }
+    ]
+  },
+  {
+    "content_index": 3,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Why do the System GAP and Random GAP lead to overfitting?"
+      },
+      {
+        "from": "gpt",
+        "value": "When brain representations are directly aligned with pretrained image features, the model must bridge these gaps. With limited paired data, learning the gaps becomes difficult, causing the model to overfit on the training set and generalize poorly to new data."
+      }
+    ]
+  },
+  {
+    "content_index": 4,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How does the Uncertainty‑aware Blur Prior (UBP) use uncertainty to blur images?"
+      },
+      {
+        "from": "gpt",
+        "value": "UBP estimates the uncertainty within the paired data, which reflects the mismatch between brain signals and visual stimuli. Based on this uncertainty, it dynamically blurs the high‑frequency details of the original images to reduce the impact of the mismatch."
+      }
+    ]
+  },
+  {
+    "content_index": 5,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What performance does UBP achieve on the zero‑shot brain‑to‑image retrieval task?"
+      },
+      {
+        "from": "gpt",
+        "value": "UBP achieves a top‑1 accuracy of 50.9% and a top‑5 accuracy of 79.7% on the THINGS‑EEG dataset, surpassing previous state‑of‑the‑art methods by margins of 13.7% and 9.8%, respectively."
+      }
+    ]
+  },
+  {
+    "content_index": 7,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Why is vision a key modality for brain research?"
+      },
+      {
+        "from": "gpt",
+        "value": "Vision is the primary sense for humans and involves approximately one‑third of the cortical surface, making the brain’s role in visual perception and cognition crucial for understanding brain activity."
+      }
+    ]
+  },
+  {
+    "content_index": 8,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What brain imaging techniques are used to measure responses to visual stimuli?"
+      },
+      {
+        "from": "gpt",
+        "value": "Electroencephalogram (EEG), Magnetoencephalography (MEG), and Functional magnetic resonance imaging (fMRI)."
+      }
+    ]
+  },
+  {
+    "content_index": 9,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the advantages and disadvantages of EEG, MEG, and fMRI?"
+      },
+      {
+        "from": "gpt",
+        "value": "EEG is low‑cost and portable with high temporal resolution, but has a low signal‑to‑noise ratio due to weak signals being influenced by the skull and noise. MEG offers high temporal resolution but is limited by high cost. fMRI provides high spatial resolution by detecting blood oxygen level changes, but its temporal resolution is limited because of the slower hemodynamic response."
+      }
+    ]
+  },
+  {
+    "content_index": 10,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the main limitation of previous brain decoding methods?"
+      },
+      {
+        "from": "gpt",
+        "value": "They fail to account for the GAPs (System GAP and Random GAP) between brain signals and visual stimuli, which leads to overfitting on the training set and poor generalization."
+      }
+    ]
+  },
+  {
+    "content_index": 11,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What factors contribute to the System GAP?"
+      },
+      {
+        "from": "gpt",
+        "value": "Limited attentional resources, constraints in eye movements and scanning, and the limited capacity of visual working memory, which together cause unavoidable information loss when digital images are transformed into brain signals."
+      }
+    ]
+  },
+  {
+    "content_index": 12,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How does the structure of the human eye contribute to the System GAP?"
+      },
+      {
+        "from": "gpt",
+        "value": "The resolution of the visual field is not uniform; it gradually decreases from the fovea toward the periphery, leading to a loss of high‑frequency details when an individual observes an object."
+      }
+    ]
+  },
+  {
+    "content_index": 14,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What does Figure 1 illustrate?"
+      },
+      {
+        "from": "gpt",
+        "value": "Figure 1 illustrates the information flow during Rapid Serial Visual Presentation (RSVP), highlighting the System GAP (loss of high‑frequency details during visual perception) and the Random GAP (caused by dynamic perceptual processes, dynamic cognitive processes, and low‑level technical noise)."
+      }
+    ]
+  },
+  {
+    "content_index": 15,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the three specific causes of the Random GAP?"
+      },
+      {
+        "from": "gpt",
+        "value": "(a) Dynamic perceptual processes such as shifts in visual attention, (b) dynamic cognitive processes such as associating with similar objects or concepts, and (c) low‑level technical noise in signal collection."
+      }
+    ]
+  },
+  {
+    "content_index": 16,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Why do brain signals vary even when the same image is viewed?"
+      },
+      {
+        "from": "gpt",
+        "value": "Human perception and cognition are inherently dynamic; attention can shift to different parts of an image, cognition may associate with related objects or concepts, and signal acquisition is affected by technical noise, all of which introduce variability."
+      }
+    ]
+  },
+  {
+    "content_index": 17,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is characteristic of the Random GAP?"
+      },
+      {
+        "from": "gpt",
+        "value": "The Random GAP is stochastic in nature, shows variability across trials and among different subjects, and is exceptionally challenging to quantify."
+      }
+    ]
+  },
+  {
+    "content_index": 18,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What problem arises when directly aligning brain signals with pretrained visual embeddings?"
+      },
+      {
+        "from": "gpt",
+        "value": "The System GAP and Random GAP force the model to bridge these mismatches. Because of the scarcity of paired data, the model overfits to the training set and generalizes poorly to new data."
+      }
+    ]
+  },
+  {
+    "content_index": 19,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the two main contributions of the paper?"
+      },
+      {
+        "from": "gpt",
+        "value": "1) Proposing the existence of System GAP and Random GAP between visual stimuli and brain signals and describing their origins. 2) Experimentally analyzing the impact of these gaps and presenting UBP, which achieves 50.9% top‑1 and 79.7% top‑5 accuracy on THINGS‑EEG."
+      }
+    ]
+  },
+  {
+    "content_index": 20,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the first contribution of the paper?"
+      },
+      {
+        "from": "gpt",
+        "value": "It proposes the System GAP (brain signals cannot faithfully reflect visual stimuli) and the Random GAP (caused by dynamics of perception, dynamics of cognition, and low‑level technical noise), which reduce the fidelity of brain signals."
+      }
+    ]
+  },
+  {
+    "content_index": 21,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the second contribution of the paper?"
+      },
+      {
+        "from": "gpt",
+        "value": "It experimentally analyzes both GAPs and proposes the Uncertainty‑aware Blur Prior (UBP), which achieves state‑of‑the‑art retrieval performance (top‑1 50.9%, top‑5 79.7% on THINGS‑EEG)."
+      }
+    ]
+  },
+  {
+    "content_index": 23,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is neural decoding?"
+      },
+      {
+        "from": "gpt",
+        "value": "Neural decoding is the process of interpreting neural signals (e.g., EEG, MEG, fMRI) to infer the state of human perception and cognition."
+      }
+    ]
+  },
+  {
+    "content_index": 24,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the two primary tasks in visual decoding?"
+      },
+      {
+        "from": "gpt",
+        "value": "Brain‑to‑image retrieval and reconstruction."
+      }
+    ]
+  },
+  {
+    "content_index": 25,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What limitation do previous contrastive‑learning‑based decoding methods have?"
+      },
+      {
+        "from": "gpt",
+        "value": "They align encoded brain representations with pretrained visual embeddings without accounting for the GAPs between brain signals and visual stimuli, leading to overfitting."
+      }
+    ]
+  },
+  {
+    "content_index": 26,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is multi‑modal contrastive learning?"
+      },
+      {
+        "from": "gpt",
+        "value": "It aligns inputs from multiple modalities into a shared representation space, typically pre‑trained on large‑scale paired datasets using a contrastive loss."
+      }
+    ]
+  },
+  {
+    "content_index": 27,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What challenge arises for certain modality pairs in multi‑modal contrastive learning?"
+      },
+      {
+        "from": "gpt",
+        "value": "For modality pairs such as audio‑visual or 3D‑language, it is difficult to obtain precisely matched paired data, which restricts the generalization capabilities of the pre‑trained models."
+      }
+    ]
+  },
+  {
+    "content_index": 28,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How does poor matching in visual‑neural data affect performance?"
+      },
+      {
+        "from": "gpt",
+        "value": "Rough alignment inevitably leads to a reduction in generalization performance."
+      }
+    ]
+  },
+  {
+    "content_index": 29,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Why is uncertainty quantification essential in the UBP framework?"
+      },
+      {
+        "from": "gpt",
+        "value": "The Random Gap lowers the signal‑to‑noise ratio in brain signals, making it necessary to quantify uncertainty and dynamically mitigate the impact of the mismatch."
+      }
+    ]
+  },
+  {
+    "content_index": 31,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What paired data representation is used in this paper?"
+      },
+      {
+        "from": "gpt",
+        "value": "The paired data is denoted as (x_v, x_b), where x_v is an image from the visual domain and x_b is the corresponding brain signal."
+      }
+    ]
+  },
+  {
+    "content_index": 32,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What loss function is used for vision‑brain contrastive learning?"
+      },
+      {
+        "from": "gpt",
+        "value": "The symmetric cross‑entropy (SCE) loss."
+      }
+    ]
+  },
+  {
+    "content_index": 33,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the two main components of UBP?"
+      },
+      {
+        "from": "gpt",
+        "value": "A Blur Prior component and an Uncertainty‑aware component."
+      }
+    ]
+  },
+  {
+    "content_index": 34,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the purpose of the Blur Prior?"
+      },
+      {
+        "from": "gpt",
+        "value": "It applies Gaussian blur to original images to reduce high‑frequency details, thereby mitigating the System GAP and preventing the model from overfitting to those details."
+      }
+    ]
+  },
+  {
+    "content_index": 35,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How are images processed in one iteration of the UBP framework?"
+      },
+      {
+        "from": "gpt",
+        "value": "A training sample (x_v, x_b) is obtained; a blurred version ˜x_v is created using a blur radius r; the brain encoder produces h_b and the vision encoder produces h_v from ˜x_v; the contrastive loss is computed; the blur radius r is updated based on uncertainty; and the model parameters are updated."
+      }
+    ]
+  },
+  {
+    "content_index": 36,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How does the Blur Prior simulate the human visual system?"
+      },
+      {
+        "from": "gpt",
+        "value": "It synthesizes images that simulate the macular and peripheral regions of the human eye by applying Gaussian blur, concentrating on the red fixation point at the image center, thereby reducing high‑frequency details as occurs in natural vision."
+      }
+    ]
+  },
+  {
+    "content_index": 37,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the formula for generating a uniformly blurred image?"
+      },
+      {
+        "from": "gpt",
+        "value": "x_blur(i,j) = sum_{m=-k}^{k} sum_{n=-k}^{k} x(i-m, j-n) * G(m,n), where G(m,n) is the Gaussian kernel defined as G(m,n) = (1/(2πσ^2)) exp(-(m^2+n^2)/(2σ^2))."
+      }
+    ]
+  },
+  {
+    "content_index": 38,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How is the fovea blur image created?"
+      },
+      {
+        "from": "gpt",
+        "value": "It is a blend of the original image and the uniformly blurred image: ˜x_v = α·x + (1‑α)·x_blur, where α is a blending factor matrix that depends on the distance from the fovea."
+      }
+    ]
+  },
+  {
+    "content_index": 39,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How is the blending factor α defined for the foveated effect?"
+      },
+      {
+        "from": "gpt",
+        "value": "α(i,j) = exp(-λ·d(i,j)/L), where d(i,j) is the Euclidean distance from the pixel to the fovea, L is the maximum possible distance, and λ controls the rate of decay."
+      }
+    ]
+  },
+  {
+    "content_index": 41,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How is uncertainty quantified in UBP?"
+      },
+      {
+        "from": "gpt",
+        "value": "The similarity scores of paired samples are found to follow a Gaussian distribution. A confidence interval is computed, and pairs with similarity scores outside this interval are considered to have a large Random GAP, which then guides the adjustment of the blur radius."
+      }
+    ]
+  },
+  {
+    "content_index": 42,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How is the blur radius r adjusted based on similarity score s?"
+      },
+      {
+        "from": "gpt",
+        "value": "If s < ˆμ - z_{α/2}·ˆσ, then r = r0 - c; if s > ˆμ + z_{α/2}·ˆσ, then r = r0 + c; otherwise, r = r0, where r0 is the baseline radius and c is a constant."
+      }
+    ]
+  },
+  {
+    "content_index": 44,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Which datasets are used in the experiments?"
+      },
+      {
+        "from": "gpt",
+        "value": "THINGS‑EEG and THINGS‑MEG."
+      }
+    ]
+  },
+  {
+    "content_index": 45,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the training‑test split of the THINGS‑EEG dataset?"
+      },
+      {
+        "from": "gpt",
+        "value": "Training set: 1654 concepts, 10 images per concept, each image repeated 4 times per subject. Test set: 200 concepts, 1 image per concept, repeated 80 times per subject. Repetitions are averaged to improve SNR."
+      }
+    ]
+  },
+  {
+    "content_index": 46,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What top‑1 and top‑5 accuracy does UBP achieve on THINGS‑EEG according to Table 1?"
+      },
+      {
+        "from": "gpt",
+        "value": "UBP achieves a top‑1 accuracy of 50.9% and a top‑5 accuracy of 79.7% on average across subjects."
+      }
+    ]
+  },
+  {
+    "content_index": 47,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the characteristics of the THINGS‑MEG dataset?"
+      },
+      {
+        "from": "gpt",
+        "value": "It involves 4 participants, 271 channels, a training set of 1854 concepts ×12 images ×1 repetition, and a test set of 200 concepts ×1 image ×12 repetitions. Repetitions are averaged for SNR."
+      }
+    ]
+  },
+  {
+    "content_index": 48,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What performance does UBP reach on THINGS‑MEG?"
+      },
+      {
+        "from": "gpt",
+        "value": "An average top‑1 accuracy of 26.7% and top‑5 accuracy of 55.2%."
+      }
+    ]
+  },
+  {
+    "content_index": 49,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What architecture is used for the brain encoder?"
+      },
+      {
+        "from": "gpt",
+        "value": "EEGProject, which consists of two linear layers with a residual connection and a normalization layer."
+      }
+    ]
+  },
+  {
+    "content_index": 50,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Which vision encoders are employed in the experiments?"
+      },
+      {
+        "from": "gpt",
+        "value": "Various CLIP vision branches: RN50, RN101, ViT‑B/16, ViT‑B/32, ViT‑L/14, ViT‑H/14, ViT‑g/14, and ViT‑bigG/14."
+      }
+    ]
+  },
+  {
+    "content_index": 51,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "By what margin does UBP outperform previous methods on THINGS‑EEG?"
+      },
+      {
+        "from": "gpt",
+        "value": "Top‑1 accuracy improved by 13.7% and top‑5 accuracy by 9.8%."
+      }
+    ]
+  },
+  {
+    "content_index": 53,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Why do corruptive transformations like blur improve retrieval performance?"
+      },
+      {
+        "from": "gpt",
+        "value": "They reduce high‑frequency details, thereby decreasing the information mismatch between visual stimuli and brain signals, which helps the model avoid overfitting to the System GAP."
+      }
+    ]
+  },
+  {
+    "content_index": 54,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Which type of image transformation is most beneficial for bridging the System GAP?"
+      },
+      {
+        "from": "gpt",
+        "value": "Transformations that degrade high‑frequency details (e.g., blur) significantly outperform those that only alter geometric properties or color distributions."
+      }
+    ]
+  },
+  {
+    "content_index": 55,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What is the effect of varying the blur radius?"
+      },
+      {
+        "from": "gpt",
+        "value": "Performance improves as blur increases, peaks at a radius of 11, and then declines because excessive blur causes an even larger information mismatch."
+      }
+    ]
+  },
+  {
+    "content_index": 57,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How is the effectiveness of uncertainty quantification validated?"
+      },
+      {
+        "from": "gpt",
+        "value": "Non‑averaged EEG signals (low SNR) are used as proxies for outlier samples; the method effectively distinguishes these outliers based on confidence intervals of the similarity distribution."
+      }
+    ]
+  },
+  {
+    "content_index": 58,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "Is UBP architecture‑specific?"
+      },
+      {
+        "from": "gpt",
+        "value": "No, it consistently improves performance across five brain encoder architectures and eight vision encoder architectures."
+      }
+    ]
+  },
+  {
+    "content_index": 59,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "How does UBP perform under subject variability?"
+      },
+      {
+        "from": "gpt",
+        "value": "UBP shows a weaker negative correlation between subject variability and accuracy compared to other methods, indicating it is more robust when handling subjects with high variability."
+      }
+    ]
+  },
+  {
+    "content_index": 60,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What are the limitations of UBP?"
+      },
+      {
+        "from": "gpt",
+        "value": "The blur prior is a simplified model of high‑frequency detail loss and lacks completeness. Additionally, uncertainty quantification may fail due to the complexity of the Random GAP, which is influenced by perceptual and cognitive dynamics as well as technical noise."
+      }
+    ]
+  },
+  {
+    "content_index": 63,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What acquisition equipment and channel configuration were used for THINGS‑EEG?"
+      },
+      {
+        "from": "gpt",
+        "value": "EEG data were collected using 64‑channel EASYCAP equipment with the standard 10‑10 system, and 17 channels over the occipital and parietal cortex were selected for analysis."
+      }
+    ]
+  },
+  {
+    "content_index": 64,
+    "conversations": [
+      {
+        "from": "human",
+        "value": "What batch size, optimizer, and weight decay are used in training?"
+      },
+      {
+        "from": "gpt",
+        "value": "A batch size of 1024, the AdamW optimizer, and a weight decay of 1e‑4."
+      }
+    ]
+  }
+]
