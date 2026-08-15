@@ -2,6 +2,11 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.agents" />
+      <excludeFolder url="file://$MODULE_DIR$/.codex" />
+      <excludeFolder url="file://$MODULE_DIR$/.trae" />
+      <excludeFolder url="file://$MODULE_DIR$/data" />
+      <excludeFolder url="file://$MODULE_DIR$/model" />
       <excludeFolder url="file://$MODULE_DIR$/model/corpus/bge-small-zh-v1.5/.cache/huggingface/download" />
     </content>
     <orderEntry type="jdk" jdkName="D:\CondaData\envs\llama" jdkType="Python SDK" />

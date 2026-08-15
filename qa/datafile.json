@@ -3,6 +3,10 @@
     "content_index": 0,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What is the title of the paper?"
       },
@@ -15,6 +19,10 @@
   {
     "content_index": 1,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is the System GAP mentioned in the paper?"
@@ -29,6 +37,10 @@
     "content_index": 2,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What causes the Random GAP?"
       },
@@ -41,6 +53,10 @@
   {
     "content_index": 3,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "Why do the System GAP and Random GAP lead to overfitting?"
@@ -55,6 +71,10 @@
     "content_index": 4,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "How does the Uncertainty‑aware Blur Prior (UBP) use uncertainty to blur images?"
       },
@@ -67,6 +87,10 @@
   {
     "content_index": 5,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What performance does UBP achieve on the zero‑shot brain‑to‑image retrieval task?"
@@ -81,6 +105,10 @@
     "content_index": 7,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Why is vision a key modality for brain research?"
       },
@@ -93,6 +121,10 @@
   {
     "content_index": 8,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What brain imaging techniques are used to measure responses to visual stimuli?"
@@ -107,6 +139,10 @@
     "content_index": 9,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What are the advantages and disadvantages of EEG, MEG, and fMRI?"
       },
@@ -119,6 +155,10 @@
   {
     "content_index": 10,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is the main limitation of previous brain decoding methods?"
@@ -133,6 +173,10 @@
     "content_index": 11,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What factors contribute to the System GAP?"
       },
@@ -145,6 +189,10 @@
   {
     "content_index": 12,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How does the structure of the human eye contribute to the System GAP?"
@@ -159,6 +207,10 @@
     "content_index": 14,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What does Figure 1 illustrate?"
       },
@@ -171,6 +223,10 @@
   {
     "content_index": 15,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What are the three specific causes of the Random GAP?"
@@ -185,6 +241,10 @@
     "content_index": 16,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Why do brain signals vary even when the same image is viewed?"
       },
@@ -197,6 +257,10 @@
   {
     "content_index": 17,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is characteristic of the Random GAP?"
@@ -211,6 +275,10 @@
     "content_index": 18,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What problem arises when directly aligning brain signals with pretrained visual embeddings?"
       },
@@ -223,6 +291,10 @@
   {
     "content_index": 19,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What are the two main contributions of the paper?"
@@ -237,6 +309,10 @@
     "content_index": 20,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What is the first contribution of the paper?"
       },
@@ -249,6 +325,10 @@
   {
     "content_index": 21,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is the second contribution of the paper?"
@@ -263,6 +343,10 @@
     "content_index": 23,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What is neural decoding?"
       },
@@ -275,6 +359,10 @@
   {
     "content_index": 24,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What are the two primary tasks in visual decoding?"
@@ -289,6 +377,10 @@
     "content_index": 25,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What limitation do previous contrastive‑learning‑based decoding methods have?"
       },
@@ -301,6 +393,10 @@
   {
     "content_index": 26,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is multi‑modal contrastive learning?"
@@ -315,6 +411,10 @@
     "content_index": 27,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What challenge arises for certain modality pairs in multi‑modal contrastive learning?"
       },
@@ -327,6 +427,10 @@
   {
     "content_index": 28,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How does poor matching in visual‑neural data affect performance?"
@@ -341,6 +445,10 @@
     "content_index": 29,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Why is uncertainty quantification essential in the UBP framework?"
       },
@@ -353,6 +461,10 @@
   {
     "content_index": 31,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What paired data representation is used in this paper?"
@@ -367,6 +479,10 @@
     "content_index": 32,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What loss function is used for vision‑brain contrastive learning?"
       },
@@ -379,6 +495,10 @@
   {
     "content_index": 33,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What are the two main components of UBP?"
@@ -393,6 +513,10 @@
     "content_index": 34,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What is the purpose of the Blur Prior?"
       },
@@ -405,6 +529,10 @@
   {
     "content_index": 35,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How are images processed in one iteration of the UBP framework?"
@@ -419,6 +547,10 @@
     "content_index": 36,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "How does the Blur Prior simulate the human visual system?"
       },
@@ -431,6 +563,10 @@
   {
     "content_index": 37,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is the formula for generating a uniformly blurred image?"
@@ -445,6 +581,10 @@
     "content_index": 38,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "How is the fovea blur image created?"
       },
@@ -457,6 +597,10 @@
   {
     "content_index": 39,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How is the blending factor α defined for the foveated effect?"
@@ -471,6 +615,10 @@
     "content_index": 41,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "How is uncertainty quantified in UBP?"
       },
@@ -483,6 +631,10 @@
   {
     "content_index": 42,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How is the blur radius r adjusted based on similarity score s?"
@@ -497,6 +649,10 @@
     "content_index": 44,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Which datasets are used in the experiments?"
       },
@@ -509,6 +665,10 @@
   {
     "content_index": 45,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What is the training‑test split of the THINGS‑EEG dataset?"
@@ -523,6 +683,10 @@
     "content_index": 46,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What top‑1 and top‑5 accuracy does UBP achieve on THINGS‑EEG according to Table 1?"
       },
@@ -535,6 +699,10 @@
   {
     "content_index": 47,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What are the characteristics of the THINGS‑MEG dataset?"
@@ -549,6 +717,10 @@
     "content_index": 48,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What performance does UBP reach on THINGS‑MEG?"
       },
@@ -561,6 +733,10 @@
   {
     "content_index": 49,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What architecture is used for the brain encoder?"
@@ -575,6 +751,10 @@
     "content_index": 50,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Which vision encoders are employed in the experiments?"
       },
@@ -587,6 +767,10 @@
   {
     "content_index": 51,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "By what margin does UBP outperform previous methods on THINGS‑EEG?"
@@ -601,6 +785,10 @@
     "content_index": 53,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Why do corruptive transformations like blur improve retrieval performance?"
       },
@@ -613,6 +801,10 @@
   {
     "content_index": 54,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "Which type of image transformation is most beneficial for bridging the System GAP?"
@@ -627,6 +819,10 @@
     "content_index": 55,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What is the effect of varying the blur radius?"
       },
@@ -639,6 +835,10 @@
   {
     "content_index": 57,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How is the effectiveness of uncertainty quantification validated?"
@@ -653,6 +853,10 @@
     "content_index": 58,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "Is UBP architecture‑specific?"
       },
@@ -665,6 +869,10 @@
   {
     "content_index": 59,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "How does UBP perform under subject variability?"
@@ -679,6 +887,10 @@
     "content_index": 60,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What are the limitations of UBP?"
       },
@@ -692,6 +904,10 @@
     "content_index": 63,
     "conversations": [
       {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
+      {
         "from": "human",
         "value": "What acquisition equipment and channel configuration were used for THINGS‑EEG?"
       },
@@ -704,6 +920,10 @@
   {
     "content_index": 64,
     "conversations": [
+      {
+        "from": "system",
+        "value": "你是一个专业领域问答助手，请基于所学知识准确回答用户的问题。"
+      },
       {
         "from": "human",
         "value": "What batch size, optimizer, and weight decay are used in training?"

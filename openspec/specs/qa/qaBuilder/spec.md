@@ -1,15 +1,25 @@
-## ADDED Requirements
+# qa/qaBuilder Specification
+
+## Purpose
+
+Define how `QaBuilder` generates source-aware ShareGPT question-answer data from ordered corpus chunks through an OpenAI-compatible Chat Completions API.
+
+## Requirements
 
 ### Requirement: Configure a direct chat-completions client
-The system SHALL initialize a direct OpenAI-compatible Chat Completions client from project dotenv configuration using `QA_BASE_URL`, `QA_API_KEY`, and `QA_MODEL`, without embedding credentials or using an Agent.
+The system SHALL initialize a direct OpenAI-compatible Chat Completions client using `QA_BASE_URL` and `QA_API_KEY`, and SHALL use an explicit constructor model when provided or otherwise `QA_MODEL`, without embedding credentials or using an Agent.
 
 #### Scenario: Required model configuration is available
 - **WHEN** a `QaBuilder` is constructed with all required environment variables
 - **THEN** it creates a client that is ready to make Chat Completions requests
 
 #### Scenario: Required configuration is missing
-- **WHEN** `QA_API_KEY` or `QA_MODEL` is absent or blank
+- **WHEN** `QA_API_KEY` is absent or blank, or neither an explicit model nor `QA_MODEL` is available
 - **THEN** construction fails with an error identifying the missing variable
+
+#### Scenario: Explicit model is provided
+- **WHEN** `QaBuilder(model="gpt-example")` is constructed
+- **THEN** requests use `gpt-example` instead of `QA_MODEL`
 
 ### Requirement: Load all chunks for an exact source filename
 The system SHALL read every `chunks.content` value whose `source_name` exactly equals `dataFile`, ordered by `chunk_index` and then chunk id, using a read-only connection to the configured corpus database.
@@ -45,11 +55,15 @@ The system SHALL make one direct non-streaming Chat Completions request per batc
 - **THEN** the request contains every document chunk, identifies `[50,99]`, and does not read, parse, or upload the original PDF
 
 ### Requirement: Validate and merge batch responses
-The system SHALL accept each batch response as a JSON array, validate every question-answer object's `content_index` against the current inclusive range, convert valid objects to single-turn ShareGPT records, and append records in batch and response order without deduplication.
+The system SHALL extract the response array, remove Markdown fences, surrounding explanation and full-line `//` comments, accept adjacent JSON objects without commas, validate every object's `content_index` against the current inclusive range, and convert valid objects to ShareGPT records in response order.
 
 #### Scenario: Batch contains questions and aliases
 - **WHEN** a batch returns valid `question` or compatible `qestion` fields with indexes inside its range
-- **THEN** the system converts and appends every record while retaining each `content_index`
+- **THEN** the system converts and appends every record while retaining each `content_index` and prefixes its human value with `根据 {dataFile} 论文，`
+
+#### Scenario: Saved question identifies the source paper
+- **WHEN** `getQA("UBP.pdf")` receives the question `模型采用什么优化器进行训练？`
+- **THEN** the saved human value is `根据 UBP.pdf 论文，模型采用什么优化器进行训练？` and the answer remains unchanged
 
 #### Scenario: Batch contains no questions
 - **WHEN** a batch returns `[]`
@@ -57,10 +71,10 @@ The system SHALL accept each batch response as a JSON array, validate every ques
 
 #### Scenario: Batch response is invalid
 - **WHEN** a response is empty text, malformed JSON, not an array, missing required fields, or contains an index outside the active range
-- **THEN** the system raises a validation error and does not change the output file
+- **THEN** the system prints the failed range and a bounded response preview, raises a validation error, and retains records from earlier completed batches
 
-### Requirement: Atomically replace the per-document ShareGPT dataset
-The system SHALL derive the output filename from the basename stem of `dataFile`, write the complete merged record list as UTF-8 JSON under `qa/`, and atomically replace the matching file only after every batch succeeds.
+### Requirement: Publish cumulative results after every batch
+The system SHALL derive the output filename from the basename stem of `dataFile`, initialize it to an empty UTF-8 JSON array after chunk loading, and atomically replace it with cumulative ShareGPT records after every successful batch.
 
 #### Scenario: PDF source produces a named dataset
 - **WHEN** `getQA("UBP.pdf")` succeeds
@@ -72,19 +86,23 @@ The system SHALL derive the output filename from the basename stem of `dataFile`
 
 #### Scenario: Later batch fails
 - **WHEN** any batch fails after earlier batches succeeded
-- **THEN** the previous per-document JSON remains unchanged and no partial result is published
+- **THEN** the per-document JSON retains all records written by earlier batches in the current run
+
+#### Scenario: Batch progress is visible
+- **WHEN** a run starts and each batch begins or completes
+- **THEN** a constructor-initialized logger and dedicated `_log` method immediately print and append to `qa/qaBuilder.log` the model, chunk count, range, per-batch count, cumulative count, and output path without credentials or full chunk text
 
 ### Requirement: Provide local and live test entry points
-The system SHALL provide `qa/test_qaBuilder.py` with default mocked tests, an opt-in API smoke mode, and a `--datafile` integration mode that uses the default batch size.
+The system SHALL provide `qa/test_qaBuilder.py` as a single-function CLI with API smoke and `--datafile` integration modes plus optional `--model` and `--per-chunk` arguments.
 
-#### Scenario: Run mocked tests
-- **WHEN** the test file runs without live-operation flags
-- **THEN** it validates batch ranges, repeated full context, prompt construction, conversion, validation, merging, and atomic replacement without network access
+#### Scenario: CLI steps are visible and retained
+- **WHEN** either live mode runs
+- **THEN** the terminal and `qa/test_qaBuilder.log` identify argument parsing, client initialization, the selected operation, completion, and failure
 
 #### Scenario: Run the API smoke check
-- **WHEN** the test file runs with `--api-smoke`
+- **WHEN** the test file runs with `--api-smoke` and an optional `--model`
 - **THEN** it sends a minimal live Chat Completions request and reports whether a non-empty answer is returned
 
 #### Scenario: Generate QA for a named source
-- **WHEN** the test file runs with `--datafile UBP.pdf`
-- **THEN** it calls `getQA("UBP.pdf")` with `per_chunk=50`, writes `qa/UBP.json`, and reports the generated record count
+- **WHEN** the test file runs with `--datafile UBP.pdf` and optional model and batch size arguments
+- **THEN** it calls `getQA`, writes `qa/UBP.json` incrementally, and reports progress and the generated record count

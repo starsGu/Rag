@@ -4,3 +4,5 @@ model
 .agents
 data
 *.txt
+*.json
+*.log
