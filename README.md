@@ -1,5 +1,11 @@
 # RAG Retriever
 
+## 安装依赖
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
 ## 运行交互脚本
 
 使用默认模型 `model/corpus/bge-small-zh-v1.5`：

@@ -4,5 +4,6 @@ model
 .agents
 data
 *.txt
+!requirements.txt
 *.json
 *.log

@@ -5,13 +5,19 @@ from __future__ import annotations
 import hashlib
 import json
 import sqlite3
+import threading
 from contextlib import closing
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Protocol
 
-from corpus.documentProcess import CorpusConfig, SimilarityModel, process_document
+from corpus.documentProcess import (
+    CorpusConfig,
+    PipelineResult,
+    SimilarityModel,
+    process_document,
+)
 
 from .method import bm25_search, vector_search
 
@@ -102,6 +108,7 @@ class Retriever:
         self.bm25_weight = self.config.bm25_weight
         self.embedder = embedder or self._load_embedder(self.model_path)
         self.similarity_model = similarity_model
+        self._archive_lock = threading.Lock()
         self._ensure_storage()
         self._initialized = True
 
@@ -109,9 +116,23 @@ class Retriever:
     def reset_instance(cls) -> None:
         cls._instance = None
 
-    def archive(self, path: Path | str):
+    @staticmethod
+    def source_key(path: Path | str) -> str:
+        return Path(path).stem.casefold()
+
+    def archive(self, path: Path | str) -> PipelineResult | None:
+        document_path = self._validate_archive_path(path)
+        source_key = self.source_key(document_path)
+
+        with self._archive_lock:
+            if self._source_key_exists(source_key):
+                return None
+
+            return self._archive_document(document_path)
+
+    def _archive_document(self, path: Path) -> PipelineResult:
         corpus_config = CorpusConfig(
-            raw_dir=Path(path).parent,
+            raw_dir=path.parent,
             corpus_dir=self.corpus_db_path.parent,
             db_path=self.corpus_db_path,
             model_dir=Path(self.model_path) if self.model_path != "lexical" else Path(""),
@@ -120,6 +141,25 @@ class Retriever:
         result = process_document(path, corpus_config, self.similarity_model)
         self.update()
         return result
+
+    @staticmethod
+    def _validate_archive_path(path: Path | str) -> Path:
+        document_path = Path(path)
+        if not document_path.exists():
+            raise FileNotFoundError(f"document not found: {document_path}")
+        if not document_path.is_file():
+            raise ValueError(f"document path is not a file: {document_path}")
+        if document_path.suffix.lower() not in {".txt", ".pdf", ".docx"}:
+            raise ValueError(f"unsupported file type: {document_path.suffix.lower()}")
+        return document_path
+
+    def _source_key_exists(self, source_key: str) -> bool:
+        with closing(self._corpus_connection()) as connection:
+            rows = connection.execute(
+                "SELECT DISTINCT source_name FROM chunks WHERE model_path = ?",
+                (self.model_path,),
+            )
+            return any(self.source_key(row["source_name"]) == source_key for row in rows)
 
     def update(self) -> None:
         chunks = self._load_chunks_for_model()

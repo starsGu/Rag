@@ -18,8 +18,8 @@ Retriever 管理知识库 data/corpus/corpus.db 和向量库 data/vector/vector.
         model_path
         created_at
     未来如果知识库增加 documents、tags 等其他表，向量库仍然只关联 chunks。
-    同一文档同一模型重复归档，不应产生重复检索结果。
-    同一文档不同模型处理，视为不同处理结果，可以产生不同 chunk 记录。
+    （stem去重后相同的）文档同一模型重复归档，不应产生重复检索结果。
+    （stem去重后相同的）文档不同模型处理，视为不同处理结果，可以产生不同 chunk 记录。
 
 向量库约定：
     vectors 表至少包含：

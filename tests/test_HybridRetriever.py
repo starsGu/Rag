@@ -45,6 +45,31 @@ class HybridRetrieverTests(unittest.TestCase):
         self.assertGreater(vector_scores["a"], vector_scores["b"])
         self.assertGreater(bm25_scores["a"], bm25_scores["b"])
 
+    def test_bm25_uses_chinese_words_instead_of_individual_characters(self):
+        scores = bm25_search(
+            "人工智能",
+            {
+                "word": "人工智能推动技术发展",
+                "characters": "人 工 智 能",
+            },
+        )
+
+        self.assertGreater(scores["word"], scores["characters"])
+        self.assertEqual(scores["characters"], 0.0)
+
+    def test_bm25_normalizes_english_numbers_and_filters_punctuation(self):
+        scores = bm25_search(
+            "OPENAI, 2026!!!",
+            {
+                "match": "openai 2026",
+                "split": "open ai 20 26",
+            },
+        )
+        punctuation_scores = bm25_search("!!!", {"punctuation": "!!!", "text": "openai"})
+
+        self.assertGreater(scores["match"], scores["split"])
+        self.assertEqual(punctuation_scores, {"punctuation": 0.0, "text": 0.0})
+
     def test_archive_dedupes_same_model_and_distinguishes_different_models(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
